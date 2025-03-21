@@ -1,0 +1,8 @@
+*.pyc
+__pycache__/
+.vscode/
+.idea/
+.venv/
+
+# 맥 os 메타데이터 파일
+._*
