@@ -18,7 +18,7 @@ class Value:
         self.value: int | None = value
 
     @classmethod
-    def get_value(cls, code: str) -> Self | None:
+    def from_code(cls, code: str) -> Self | None:
 
         read_code = ""
 

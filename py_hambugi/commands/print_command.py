@@ -12,5 +12,5 @@ class PrintCommand(AbstractCommand):
     def run(self, runtime_manager: "RuntimeManager") -> None:
         pass
 
-    def get_command(cls, code: str) -> Self | None:
+    def from_code(cls, code: str) -> Self | None:
         ...
