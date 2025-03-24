@@ -43,7 +43,10 @@ class Value:
     @classmethod
     def from_code(cls, code: str) -> Self | None:
 
-        if code.startswith(syntax_set.VALUE_PREFIX):
+        if code.startswith(syntax_set.B): return Value( code[:len(syntax_set.B)], ValueType.B )
+        elif code.startswith(syntax_set.C): return Value( code[:len(syntax_set.C)], ValueType.C )
+
+        elif code.startswith(syntax_set.VALUE_PREFIX):
             read_code = ""
 
             read_code += code[:len(syntax_set.VALUE_PREFIX)]
@@ -80,8 +83,6 @@ class Value:
 
         elif code.startswith(syntax_set.A):
             ... # 변수 A 를 지칭하는 "햄부" 문법은 윗줄의 code.startswith(syntax_set.VALUE_PREFIX) 에서 감지함
-        elif code.startswith(syntax_set.B): return Value( code[:len(syntax_set.B)], ValueType.B )
-        elif code.startswith(syntax_set.C): return Value( code[:len(syntax_set.C)], ValueType.C )
 
         else:
             return None
