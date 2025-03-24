@@ -18,21 +18,17 @@ class ValueCopyCommand(AbstractCommand):
 
     @classmethod
     def from_code(cls, code: str) -> Self | None:
-        read_code = ""
 
         if code.startswith(syntax_set.COPY_COMMAND):
+            read_code = ""
             code, read_code = cls.read_code(code, read_code, syntax_set.COPY_COMMAND)
 
             copy_value = Value.from_code(code)
-            if copy_value is None or not copy_value.is_variable():
-                return None
-
+            if copy_value is None or not copy_value.is_variable(): return None
             code, read_code = cls.read_code(code, read_code, copy_value.code)
 
             target_value = Value.from_code(code)
-            if target_value is None or not target_value.is_variable():
-                return None
-
+            if target_value is None or not target_value.is_variable(): return None
             code, read_code = cls.read_code(code, read_code, target_value.code)
 
             return cls(read_code, copy_value, target_value)
