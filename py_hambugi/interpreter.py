@@ -22,6 +22,9 @@ class Interpreter:
 
 
         while len(code) != 0:
+
+            is_read = False
+
             for command_cls in hambugi_lang_command_set:
 
                 command = command_cls.from_code(code)
@@ -30,8 +33,11 @@ class Interpreter:
 
                     code, _ = read_code(code, "", command.code)
                     self.commands.append(command)
+                    is_read = True
 
                     break
+
+            if not is_read: code = code[1:len(code)]
 
 
 
