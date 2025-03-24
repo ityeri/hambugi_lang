@@ -1,5 +1,7 @@
-from .commands.abstract_command import *
+from typing import Type
 
-hambugi_lang: list[AbstractCommand] = [
+from .commands import *
 
+hambugi_lang: list[Type[AbstractCommand]] = [
+    PrintCommand
 ]
