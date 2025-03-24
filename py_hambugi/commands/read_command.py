@@ -22,9 +22,10 @@ class ReadCommand(AbstractCommand):
     def from_code(cls, code: str) -> Self | None:
         if code.startswith(syntax_set.READ_COMMAND):
             read_code = ""
+            code, read_code = cls.read_code(code, read_code, syntax_set.READ_COMMAND)
 
             index_value = Value.from_code(code)
-            if index_value is None or not index_value.is_variable(): return None
+            if index_value is None: return None
             code, read_code = cls.read_code(code, read_code, index_value.code)
 
             target_value = Value.from_code(code)
