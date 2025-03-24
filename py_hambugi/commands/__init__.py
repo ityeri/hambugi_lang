@@ -5,6 +5,7 @@ from .add_command import AddCommand
 from .sub_command import SubCommand
 
 from .read_command import ReadCommand
+from .write_command import WriteCommand
 
 __all__ = [
     "AbstractCommand",
@@ -13,5 +14,6 @@ __all__ = [
     "AddCommand",
     "SubCommand",
 
-    "ReadCommand"
+    "ReadCommand",
+    "WriteCommand"
 ]
