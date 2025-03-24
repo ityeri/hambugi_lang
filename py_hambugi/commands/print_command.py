@@ -22,13 +22,10 @@ class PrintCommand(AbstractCommand):
 
         value = Value.from_code(code)
         if value is None: return None
-
-        read_code += code[:len(value.code)]
-        code = code[len(value.code):]
+        code, read_code = cls.read_code(code, read_code, value.code)
 
         if code.startswith(syntax_set.PRINT_COMMAND):
-            read_code += code[:6]
-            code = code[6:]
+            code, read_code = cls.read_code(code, read_code, syntax_set.PRINT_COMMAND)
 
             return cls(read_code, value)
 
