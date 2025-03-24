@@ -19,6 +19,10 @@ class Value:
         self.value_type: ValueType = value_type
         self._value: int | None = int_value
 
+    def is_variable(self): return self.value_type != ValueType.INT
+
+
+
     def get_value(self, runtime_manager: RuntimeManager) -> int:
         if self.value_type == ValueType.INT: return self._value
 
