@@ -55,15 +55,18 @@ class Value:
             current_chr = ""
             decimal_value = [0]
 
-            if code.startswith("가"): current_chr = "우"
-            elif code.startswith("우"): current_chr = "가"
-            else: return Value(read_code, ValueType.A)
+            if (not code.startswith("가") and code.startswith("우")
+                    and code.startswith("구")):
+
+                return Value(read_code, ValueType.A)
+
 
             while True:
                 old_chr = current_chr
 
                 if code.startswith("가"): current_chr = "가"
                 elif code.startswith("우"): current_chr = "우"
+                elif code.startswith("구"): current_chr = "구"
                 elif len(read_code) == 0: break
                 else: break
 
@@ -71,8 +74,9 @@ class Value:
                 code = code[1:]
 
                 if old_chr != current_chr: decimal_value.append(0)
+                elif current_chr == "구": decimal_value.append(0)
 
-                decimal_value[-1] += 1
+                if current_chr != "구": decimal_value[-1] += 1
 
 
             final_value = int(
