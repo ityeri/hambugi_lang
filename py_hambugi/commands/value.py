@@ -1,6 +1,7 @@
 from enum import Enum
 from typing import Self
 from ..runtime_manager import RuntimeManager
+from . import syntax_set
 
 
 class ValueType(Enum):
@@ -38,11 +39,11 @@ class Value:
     @classmethod
     def from_code(cls, code: str) -> Self | None:
 
-        if code.startswith("햄부"):
+        if code.startswith(syntax_set.VALUE_PREFIX):
             read_code = ""
 
-            read_code += code[:2]
-            code = code[2:]
+            read_code += code[:len(syntax_set.VALUE_PREFIX)]
+            code = code[len(syntax_set.VALUE_PREFIX):]
 
             current_chr = ""
             decimal_value = [0]
@@ -73,9 +74,10 @@ class Value:
 
             return Value(read_code, ValueType.INT, final_value)
 
-        elif code.startswith("햄부"): ... # 변수 A 를 지칭하는 "햄부" 문법은 윗줄의 code.startswith("햄부") 에서 감지함!
-        elif code.startswith("햄북어"): return Value(code[:3], ValueType.B)
-        elif code.startswith("햄북스딱스"): return Value(code[:4], ValueType.C)
+        elif code.startswith(syntax_set.A):
+            ... # 변수 A 를 지칭하는 "햄부" 문법은 윗줄의 code.startswith(syntax_set.VALUE_PREFIX) 에서 감지함
+        elif code.startswith(syntax_set.B): return Value( code[:len(syntax_set.B)], ValueType.B )
+        elif code.startswith(syntax_set.C): return Value( code[:len(syntax_set.C)], ValueType.C )
 
         else:
             return None
