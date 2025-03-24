@@ -10,7 +10,7 @@ class AbstractCommand(metaclass=ABCMeta):
     code: str
 
     @abstractmethod
-    def __init__(self): ...
+    def __init__(self, code: str): ...
 
     @abstractmethod
     def run(self, runtime_manager: "RuntimeManager") -> None: ...
@@ -18,3 +18,8 @@ class AbstractCommand(metaclass=ABCMeta):
     @classmethod
     @abstractmethod
     def from_code(cls, code: str) -> Self | None: ...
+
+    @staticmethod
+    def read_code(code: str, read_code: str, readable_code: str):
+        read_code += code[:len(readable_code)]
+        code = code[len(readable_code):]
