@@ -44,7 +44,13 @@ class Interpreter:
     def run(self):
         while True:
             self.commands[self.command_index].run(self.runtime_manager)
-            self.command_index += 1
+
+            jump_label_id = self.runtime_manager.jump_dispose()
+
+            if jump_label_id is None:
+                self.command_index += 1
+            else:
+                ... # TODO
 
             if self.command_index == len(self.commands): break
 
