@@ -9,6 +9,8 @@ from .write_command import WriteCommand
 
 from .label_command import LabelCommand
 
+from .zero_jump_command import ZeroJumpCommand
+
 __all__ = [
     "AbstractCommand",
     "PrintCommand",
@@ -19,5 +21,7 @@ __all__ = [
     "ReadCommand",
     "WriteCommand",
 
-    "LabelCommand"
+    "LabelCommand",
+
+    "ZeroJumpCommand"
 ]
