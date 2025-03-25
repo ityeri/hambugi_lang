@@ -12,4 +12,8 @@ SUB_COMMAND = "햄부가티"
 READ_COMMAND = "햄비기"
 WRITE_COMMAND = "햄부거"
 
+ZERO_JUMP_COMMAND = "햄부기온앤온"
+POSITIVE_JUMP_COMMAND = "햄부기온앤"
+NAGATIVE_JUMP_COMMAND = "햄부기엔온"
+
 PRINT_COMMAND = "를차려오거라"
