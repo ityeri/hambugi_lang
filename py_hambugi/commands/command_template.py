@@ -11,7 +11,7 @@ class TemplateCommand(AbstractCommand):
         self.code = code
         ...
 
-    def run(self, runtime_manager: "RuntimeManager") -> None:
+    def run(self, runtime_manager: RuntimeManager) -> None:
         ...
 
     @classmethod
