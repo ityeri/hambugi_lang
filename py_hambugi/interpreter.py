@@ -1,4 +1,4 @@
-from .commands.abstract_command import AbstractCommand
+from .commands import AbstractCommand, LabelCommand
 from .command_sets import hambugi_lang_command_set
 from .runtime_manager import RuntimeManager
 
@@ -50,7 +50,11 @@ class Interpreter:
             if jump_label_id is None:
                 self.command_index += 1
             else:
-                ... # TODO
+                for i, command in enumerate(self.commands):
+
+                    if isinstance(command, LabelCommand):
+                        if command.label_id == jump_label_id:
+                            self.command_index = i
 
             if self.command_index == len(self.commands): break
 
