@@ -1,10 +1,10 @@
 from typing import Type
 
 from .commands import *
-from .commands.value_copy_command import ValueCopyCommand
+from py_hambugi.commands.arithmetic.set_command import SetCommand
 
 hambugi_lang_command_set: list[Type[AbstractCommand]] = [
-    ValueCopyCommand,
+    SetCommand,
 
     AddCommand,
     SubCommand,
@@ -12,5 +12,8 @@ hambugi_lang_command_set: list[Type[AbstractCommand]] = [
     ReadCommand,
     WriteCommand,
 
-    PrintCommand
+    PrintCommand,
+
+    LabelCommand,
+    ZeroJumpCommand
 ]
