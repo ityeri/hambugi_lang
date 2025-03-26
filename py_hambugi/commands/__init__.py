@@ -1,19 +1,18 @@
 from .abstract_command import AbstractCommand
-from .print_command import PrintCommand
+from .io.print_command import PrintCommand
 
-from .add_command import AddCommand
-from .sub_command import SubCommand
+from .arithmetic.add_command import AddCommand
+from .arithmetic.sub_command import SubCommand
 
-from .read_command import ReadCommand
-from .write_command import WriteCommand
+from .memory.read_command import ReadCommand
+from .memory.write_command import WriteCommand
 
-from .label_command import LabelCommand
+from .jump.label_command import LabelCommand
 
-from .zero_jump_command import ZeroJumpCommand
+from .jump.zero_jump_command import ZeroJumpCommand
 
 __all__ = [
     "AbstractCommand",
-    "PrintCommand",
 
     "AddCommand",
     "SubCommand",
@@ -22,6 +21,7 @@ __all__ = [
     "WriteCommand",
 
     "LabelCommand",
+    "ZeroJumpCommand",
 
-    "ZeroJumpCommand"
+    "PrintCommand"
 ]

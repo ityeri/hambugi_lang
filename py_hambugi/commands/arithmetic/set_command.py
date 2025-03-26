@@ -1,20 +1,20 @@
 from typing import Self
 
-from .abstract_command import AbstractCommand, RuntimeManager
-from . import syntax_set
-from .value import Value
+from ..abstract_command import AbstractCommand, RuntimeManager
+from .. import syntax_set
+from ..value import Value
 
 
-class ValueCopyCommand(AbstractCommand):
-    def __init__(self, code: str, copy_variable: Value, target_variable: Value):
+class SetCommand(AbstractCommand):
+    def __init__(self, code: str, copy_value: Value, target_variable: Value):
         self.code = code
-        self.copy_variable: Value = copy_variable
+        self.copy_value: Value = copy_value
         self.target_variable: Value = target_variable
 
     def run(self, runtime_manager: "RuntimeManager") -> None:
         self.target_variable.set_value(
             runtime_manager,
-            self.copy_variable.get_value(runtime_manager))
+            self.copy_value.get_value(runtime_manager))
 
     @classmethod
     def from_code(cls, code: str) -> Self | None:
@@ -24,7 +24,7 @@ class ValueCopyCommand(AbstractCommand):
             code, read_code = cls.read_code(code, read_code, syntax_set.COPY_COMMAND)
 
             copy_value = Value.from_code(code)
-            if copy_value is None or not copy_value.is_variable(): return None
+            if copy_value is None or not copy_value: return None
             code, read_code = cls.read_code(code, read_code, copy_value.code)
 
             target_value = Value.from_code(code)

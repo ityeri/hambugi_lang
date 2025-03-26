@@ -1,9 +1,9 @@
 from typing import Self
 
-from . import syntax_set
-from .abstract_command import AbstractCommand, RuntimeManager
+from .. import syntax_set
+from ..abstract_command import AbstractCommand, RuntimeManager
 
-from.value import Value
+from ..value import Value
 
 # TODO read_code 메서드 사용하도록 변경
 

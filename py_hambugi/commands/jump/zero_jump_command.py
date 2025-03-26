@@ -1,9 +1,9 @@
 from typing import Self
 
-from .abstract_command import AbstractCommand, RuntimeManager
-from . import syntax_set
-from .value import Value
-from .label_command import LabelCommand
+from py_hambugi.commands.abstract_command import AbstractCommand, RuntimeManager
+from py_hambugi.commands import syntax_set
+from py_hambugi.commands.value import Value
+from py_hambugi.commands.jump.label_command import LabelCommand
 
 
 

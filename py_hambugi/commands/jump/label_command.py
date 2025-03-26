@@ -1,8 +1,7 @@
 from typing import Self
 
-from .abstract_command import AbstractCommand, RuntimeManager
-from . import syntax_set
-from .value import Value
+from ..abstract_command import AbstractCommand, RuntimeManager
+from .. import syntax_set
 
 
 
