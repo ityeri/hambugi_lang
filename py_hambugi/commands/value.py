@@ -55,8 +55,8 @@ class Value:
             current_chr = ""
             decimal_value = [0]
 
-            if (not code.startswith("가") and code.startswith("우")
-                    and code.startswith("구")):
+            if (not code.startswith("가") and not code.startswith("우")
+                   and not code.startswith("구")):
 
                 return Value(read_code, ValueType.A)
 
